@@ -16,7 +16,7 @@ It is recommended to install castle combat into a python virtual environment. Ex
 ```
 
 follow https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/ for mac / windows 
-for windows (replace below py / python /python3 to meet your ininstalled distro):
+for windows (replace below py / python /python3 to meet your installed distro):
 
 ```sh
   python -m pip install --upgrade pip
