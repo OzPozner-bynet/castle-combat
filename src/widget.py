@@ -240,13 +240,17 @@ class LineEdit(Widget):
             self.widget.update_text(self.show_cursor)
 
         def handleKeypress(self, event):
-            if event.key == K_BACKSPACE:
-                self.widget.value = self.widget.value[:-1]
-            elif event.key in (K_RETURN, K_ESCAPE):
-                self.quit()
-            elif event.str:
-                self.widget.value += event.str
-            self.widget.update_text(self.show_cursor)
+            try:
+                if event.key == K_BACKSPACE:
+                    self.widget.value = self.widget.value[:-1]
+                elif event.key in (K_RETURN, K_ESCAPE):
+                    self.quit()
+                elif event.type == KEYDOWN:
+                    self.widget.value += event.unicode
+                #TODO: consider using   pygame.key.name(event.key)  
+                self.widget.update_text(self.show_cursor)
+            except Exception as e:   
+                 print("for event" + str(event) + " of type:" +str(event.type)+ " got exception: "+ str(e))
 
         events = {
             MOUSEBUTTONDOWN: lambda self, event: self.quit(),

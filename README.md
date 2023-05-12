@@ -24,6 +24,7 @@ for windows (replace below py / python /python3 to meet your installed distro):
   python -m pip install --user virtualenv
   python -m venv env
   .\env\Scripts\activate
+  python -m pip install --upgrade pip
 ```
  veryify with  
 
@@ -44,7 +45,7 @@ All OSs continue here:
 you can FIX the Server Hostname in windows https://linuxhint.com/is-there-any-sed-like-utility-cmd-exe/
 in powershell {not in cmd.exe} run with the leading 4 space before server= :
 ```sh
-Get-Content .\src\config.py | %{$_ -replace '    server = "localhost"' , '    server = "new hostname or ip"'}
+Get-Content .\src\config.py | %{$_ -replace '    server = "localhost"' , '    server = "new hostname or ip"'} > .\src\config.py
 ```
 
 for linux/mac use sed https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
