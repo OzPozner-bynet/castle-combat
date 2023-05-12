@@ -44,12 +44,12 @@ All OSs continue here:
 you can FIX the Server Hostname in windows https://linuxhint.com/is-there-any-sed-like-utility-cmd-exe/
 in powershell {not in cmd.exe} run with the leading 4 space before server= :
 ```sh
-Get-Content .\src\config.py | %{$_ -replace '    server = "localhost"' , '    server = "localhost"'}
+Get-Content .\src\config.py | %{$_ -replace '    server = "localhost"' , '    server = "new hostname or ip"'}
 ```
 
 for linux/mac use sed https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 ```sh
-sed -i 's/    server = "localhost"/    server = "localhost"/g' ./src/config.py
+sed -i 's/    server = "localhost"/    server = "new server hostname"/g' ./src/config.py
 ```
 
 For mac/linux run game with:
