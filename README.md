@@ -36,13 +36,31 @@ for mac/linux:
   python3 -m venv venv
   source venv/bin/activate
 ```
-
-All OS continue here:
+All OSs continue here:
 ```sh
   pip install -r requirements.txt
-  ./castle-combat.py
 ```
 
+you can FIX the Server Hostname in windows https://linuxhint.com/is-there-any-sed-like-utility-cmd-exe/
+in powershell {not in cmd.exe} run with the leading 4 space before server= :
+```sh
+Get-Content .\src\config.py | %{$_ -replace '    server = "localhost"' , '    server = "localhost"'}
+```
+
+for linux/mac use sed https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
+```sh
+sed -i 's/    server = "localhost"/    server = "localhost"/g' ./src/config.py
+```
+
+For mac/linux run game with:
+```sh
+ ./castle-combat.py
+```
+
+For windows run game with:
+```sh
+ .\c.bat
+``` 
 ## Support
 
 Please report bugs at (master) https://github.com/karlb/castle-combat/issues.
