@@ -62,12 +62,22 @@ class PlayerConfig:
 
 class Config:
     server = "localhost"
+    import socket
+    if socket.gethostname() == "OZDesk":
+        server = "OZDesk"
+    else:
+        print("localhost name is unknown :"+ socket.gethostname()+ " fix manualy in ./src/config.py")   
     total_players = 2
-    local_players = 2
+    local_players = 1
     ai_players = 1
     fullscreen = False
     sound = False
-
+    BuildPhaseDuration = 20
+    PlacePhaseDuration = 25
+    BattlePhaseDuration = 20
+    SelectPhaseDuration = 31
+    
+    
 
 def open_config_file(mode):
     import os
@@ -81,7 +91,7 @@ def open_config_file(mode):
 
 def save():
     conf.player_configs = PlayerConfig.instances
-    conf.version = 1
+    conf.version = 2
     file = open_config_file("wb")
     import pickle
 
@@ -96,7 +106,7 @@ def load():
 
         conf = pickle.load(file)
         try:
-            if conf.version != 1:
+            if conf.version != 2:
                 raise "Unknown config file version."
         except AttributeError:
             print("Updating config file from alpha version")

@@ -5,6 +5,8 @@ from numpy import *
 import common
 from game import game
 from state import State, IgnoreEvent
+import config 
+#add by oz to enable access to config level settings mayne should use common ?
 
 
 class GameState(State):
@@ -133,7 +135,10 @@ class AnnouncePhase(State):
 class BuildPhase(Phase):
 
     phase_name = "build"
-    duration = 18
+    if config.conf.BuildPhaseDuration is None:
+      duration = 18
+    else:
+      duration = config.conf.BuildPhaseDuration
 
     def __init__(self):
         def build_actions(passed_milliseconds):
@@ -196,7 +201,11 @@ class BuildPhase(Phase):
 class PlacePhase(Phase):
 
     phase_name = "place"
-    duration = 15
+    if config.conf.PlacePhaseDuration is None:
+      duration = 15
+    else:
+      duration = config.conf.PlacePhaseDuration
+    
 
     def __init__(self):
         def place_actions(passed_milliseconds):
@@ -219,7 +228,11 @@ class PlacePhase(Phase):
 class BattlePhase(Phase):
 
     phase_name = "battle"
-    duration = 10
+    if config.conf.BattlePhaseDuration is None:
+      duration = 20
+    else:
+      duration = config.conf.BattlePhaseDuration
+    
 
     def __init__(self):
         def battle_actions(passed_milliseconds):
@@ -264,7 +277,11 @@ class BattlePhase(Phase):
 class SelectPhase(Phase):
 
     phase_name = "select"
-    duration = 20
+    if config.conf.SelectPhaseDuration is None:
+      duration = 30
+    else:
+      duration = config.conf.SelectPhaseDuration
+    
 
     def __init__(self):
         def select_actions(passed_milliseconds):
