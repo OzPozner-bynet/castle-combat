@@ -3,7 +3,7 @@ import numpy as np
 from numpy import *
 from twisted.spread import pb
 from twisted.internet import reactor
-
+import math
 import common
 from game import game
 from field import Field, Grunt, Castle
@@ -254,12 +254,16 @@ class RiverMap4p(RiverMap):
         RiverMap.setup(self)
 
         for y in range(common.field_size[1]):
+            myx_start = math.ceil(common.field_size[0] / 2 - 1) 
+            myx_end   = math.ceil(common.field_size[0] / 2 + 1)
             self.array[
-                (common.field_size[0] / 2 - 1) : (common.field_size[0] / 2 + 1), y
+               myx_start : myx_end, y
             ] = Field.RIVER
         for x in range(common.field_size[0]):
+            myy_start = math.ceil(common.field_size[1] / 2 - 1) 
+            myy_end   = math.ceil(common.field_size[1] / 2 + 1)
             self.array[
-                x, (common.field_size[1] / 2 - 1) : (common.field_size[1] / 2 + 1)
+                x, myy_start : myy_end
             ] = Field.RIVER
         for i in (0, 1):
             self.castles += [
