@@ -51,7 +51,7 @@ class Client:
         factory.client = self
         reactor.connectTCP(self.server_name, pb.portno, factory)
         # factory.login(Anonymous()).addCallbacks(connected, failure)
-        d = factory.login(UsernamePassword("guest", "guest"), ClientMind(self))
+        d = factory.login(UsernamePassword("guest", "guest".encode('utf-8')), ClientMind(self))
         d.addCallbacks(self.connected_callback, self.failure_callback)
 
     ##### callbacks
