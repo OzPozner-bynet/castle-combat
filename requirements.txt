@@ -1,3 +1,5 @@
 pygame
 numpy
 twisted
+kivy
+buildozer

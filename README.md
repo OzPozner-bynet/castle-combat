@@ -70,3 +70,12 @@ Please report bugs at (master) https://github.com/karlb/castle-combat/issues.
 ## Author
 
 Orignal Atuhoer Karl Bartel <karl42@gmail.com> Forked and maintain by <Oz.Pozner@hotmail.com>
+
+windows powershell
+For windows run game with:
+```sh
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
+Get-ExecutionPolicy -List
+& ./env/Scripts/Activate.ps1
+For windows run game with:
+```

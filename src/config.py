@@ -72,10 +72,10 @@ class Config:
     ai_players = 1
     fullscreen = False
     sound = False
-    BuildPhaseDuration = 20
+    BuildPhaseDuration = 40
     PlacePhaseDuration = 25
     BattlePhaseDuration = 20
-    SelectPhaseDuration = 31
+    SelectPhaseDuration = 21
     
     
 
