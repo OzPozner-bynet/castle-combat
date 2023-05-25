@@ -10,6 +10,16 @@ import config
 
 
 class GameState(State):
+    def handle_mouse(self, event):
+        if common.debug and event.type == MOUSEBUTTONDOWN:
+           if   event.button == 1 :
+               print("mouse button 1 pressed")
+           elif event.button == 2 :   
+               print("mouse button 2 pressed")
+           elif event.button == 3 :   
+               print("mouse button 3 pressed")
+           else:
+               print('unknown mouse button pressed '+str(event.button))        
     def handle_keypress(self, event):
         if common.debug and event.type == KEYDOWN:
             if event.key == K_BACKSPACE:
@@ -38,7 +48,12 @@ class GameState(State):
         if game.server:
             game.server.quit()
 
-    persistent_events = {KEYDOWN: handle_keypress}
+    persistent_events = {KEYDOWN: handle_keypress,
+    # oz start
+                        MOUSEMOTION: handle_mouse,
+                        MOUSEBUTTONDOWN: handle_mouse
+    # oz end                     
+                         }
 
 
 class Phase(State):
@@ -64,7 +79,14 @@ class Phase(State):
             self.time_left -= passed_milliseconds * 0.001
             game.print_time()
             common.update()
-
+#Oz: to prevent "DRY" also handeling mouse without rename or duplicating
+    def handle_mouse(self, event):
+        for player in game.players:
+            if player.local:
+                player.handle_event(event)
+      
+        
+        
     def handle_keypress(self, event):
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
@@ -77,7 +99,15 @@ class Phase(State):
             if player.local:
                 player.handle_event(event)
 
-    events = {KEYDOWN: handle_keypress, KEYUP: handle_keypress}
+# OZ: changing orginal code to support mouse
+#    events = {KEYDOWN: handle_keypress, KEYUP: handle_keypress}
+# Oz new code start:
+    events = {KEYDOWN: handle_keypress,
+              KEYUP: handle_keypress,
+              MOUSEMOTION: handle_mouse,
+              MOUSEBUTTONDOWN: handle_mouse
+              }
+# Oz new code end
 
 
 class AnnouncePhase(State):

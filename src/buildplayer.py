@@ -109,6 +109,7 @@ class BuildPlayer(BasePlayer):
                         field[xpos][ypos] = self.player.player_id
         # The player will have to wait a short time until he gets the next block
         self.block = None
+        # OZ_TODO: set wait_for_block_timer maybe as player ability
         self.wait_for_block = 500
         field.look_for_secured_areas(self.player)
 

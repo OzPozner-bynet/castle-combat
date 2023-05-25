@@ -95,9 +95,15 @@ class Player:
         self.local = False
         self.ai = False
         # self.center = common.field_size / 2
-
+        import config
+        if config.conf.lives:
+            self.lives = config.conf.lives
+        else:
+            self.lives = 1
         self.set_player_id(player_id)
-
+        print("player "+str(self._player_id)+" has "+str(self.lives)+" lives")
+        
+        
         import buildplayer
         import placeplayer
         import battleplayer
@@ -157,9 +163,17 @@ class Player:
     # 	castles = property(**castles())
 
     def die(self):
-        self.alive = False
-        self.handle_event = self.handle_movement = self.draw_cursor = lambda *args: None
-
+        self.lives -= 1
+        if self.lives< 1:  
+          self.alive = False
+          self.handle_event = self.handle_movement = self.draw_cursor = lambda *args: None
+#OZ_TODO: set lives -1 and if lives >0 and there is a free castle allow respan meaing call player
+# select and place cannons ...
+        else:
+            print("player "+str(self._player_id)+" has "+str(self.lives)+" lives")
+            import placeplayer
+            self.place_player = placeplayer.PlacePlayerServer(self)
+            
     # delegations to phase_player
     def draw_cursor(self, *args, **kwargs):
         self.phase_player.draw_cursor(*args, **kwargs)

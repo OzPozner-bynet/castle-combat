@@ -1,3 +1,27 @@
+          ==== Oz TODO ======
+    - bug fixes related to 3.10, and 3 players
+    - display available lives at the "corner/castle" of each player
+    - add live when capturing a new castle
+    - grid patteren coloring like orignal game
+    - add trees / houses
+    - add support for kivy port to android/ios 
+    - allow advance config to set timers, lives, cannon strength , immigrents which builg house 
+      in enemey area.
+    
+    new ideas:
+    - add builders , auto rebuild , and cut debree/garbage timer by 1 turn
+    - add trees
+    - add tree, hostile gardeners, lumber jacks which plant / cut down trees
+        1 turn to remove a tree  
+    - add immegrents and tax collectors     
+        2 turn to remove a house and "send" the people to build a house else where
+    place walls around hamlets (collection of houses) to remove them
+    - add shipyard build ships which like grunts attacks enemies from river / sea
+    - add factory  build grunts
+    - add engineers build bridges (can be used by people from both sides)
+    - add spies - plant bombs at key locations (can blow up brides)
+    - add "planing and money spending/research phase"
+    - collect money from colored area and tax collectors to buy cannons / research / special features
 
 			=== TODO ===
 

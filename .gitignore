@@ -2,3 +2,5 @@
 *.config
 venv/
 env/
+.buildozer/
+build/

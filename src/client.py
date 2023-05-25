@@ -51,6 +51,8 @@ class Client:
         factory.client = self
         reactor.connectTCP(self.server_name, pb.portno, factory)
         # factory.login(Anonymous()).addCallbacks(connected, failure)
+        # OZ_TODO: check 3way handshake with common server and game server running on initiator with ability to promote clients
+        # OZ_TODO: check vault /HSM for username password storage maybe in config
         d = factory.login(UsernamePassword("guest", "guest".encode('utf-8')), ClientMind(self))
         d.addCallbacks(self.connected_callback, self.failure_callback)
 

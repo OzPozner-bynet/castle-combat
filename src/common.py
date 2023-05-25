@@ -3,6 +3,7 @@ from pygame.locals import *
 import numpy as np
 from numpy import *
 import os
+import config
 
 debug = False
 
@@ -218,10 +219,13 @@ def init():
     global screen
     flags = 0
     import config
+    if config.conf.debug:
+        debug = config.conf.debug 
 
     if config.conf.fullscreen:
         flags |= pygame.FULLSCREEN
     screen = pygame.display.set_mode((800, 600), flags)
+    #OZ_TODO: support resulotion change
     global backbuffer
     global font
     font = pygame.font.Font(os.path.join(data_path, "DefaultFancy.ttf"), 34)

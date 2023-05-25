@@ -76,7 +76,8 @@ class Config:
     PlacePhaseDuration = 25
     BattlePhaseDuration = 20
     SelectPhaseDuration = 21
-    
+    debug = True
+    lives = 3
     
 
 def open_config_file(mode):
